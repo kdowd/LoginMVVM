@@ -27,7 +27,7 @@
             <Label Content="Status: Logged In" Visibility="{Binding LoggedInStatus, Converter={StaticResource BoolToVis}}" />
             <Label Content="Status: Not Logged In" Visibility="{Binding LoggedInStatus, Converter={StaticResource BoolToVisInverse}}" />
             <Button Content="Log In" Visibility="{Binding LoggedInStatus, Converter={StaticResource BoolToVisInverse}}" />
-            <Button Content="Log Out" Visibility="{Binding LoggedInStatus, Converter={StaticResource BoolToVis}}" />
+            <Button Command="{Binding LogOutCommand}" Content="Log Out" Visibility="{Binding LoggedInStatus, Converter={StaticResource BoolToVis}}" />
         </WrapPanel>
 
     </Grid>

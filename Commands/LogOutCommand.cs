@@ -11,9 +11,8 @@ namespace LoginMVVM.Commands
 {
     public class LogOutCommand : ICommand
     {
-        public event EventHandler? CanExecuteChanged;
 
-        private LoggedInUser vm;
+        private readonly LoggedInUser vm;
 
         public LogOutCommand(LoggedInUser vm) {
             this.vm = vm;
@@ -26,9 +25,26 @@ namespace LoginMVVM.Commands
 
         public void Execute(object? parameter)
         {
-            MessageBox.Show("664");
+            MessageBox.Show("Log Out");
             vm.LoggedInStatus = false;
-            
+            CommandManager.InvalidateRequerySuggested();
+
+
+        }
+
+        public event EventHandler CanExecuteChanged
+        {
+
+            add
+            {
+
+                CommandManager.RequerySuggested += value;
+            }
+            remove
+            {
+
+                CommandManager.RequerySuggested -= value;
+            }
         }
     }
 }
