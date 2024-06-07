@@ -5,24 +5,31 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LoginMVVM.View"
              xmlns:model="clr-namespace:LoginMVVM.ViewModels"
+             xmlns:converters="clr-namespace:LoginMVVM.Converters"
              mc:Ignorable="d" 
              Background="#FF1984E0"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <converters:BooleanToOppositeBoolConverter x:Key="BoolToVisInverse" />
     </UserControl.Resources>
 
+    <UserControl.CommandBindings>
+        
+    </UserControl.CommandBindings>
+
     <UserControl.DataContext >
-        <model:LoggedInUser />
+        <model:LoggedInUser x:Name="temp" />
     </UserControl.DataContext>
     <Grid>
         <!-- https://www.codeproject.com/Articles/24330/WPF-Bind-to-Opposite-Boolean-Value-Using-a-Convert -->
         <WrapPanel>
             <Label Content="Status: Logged In" Visibility="{Binding LoggedInStatus, Converter={StaticResource BoolToVis}}" />
-            <Label Content="Status: Not Logged In"  Visibility="{Binding LoggedInStatus, Converter={StaticResource BoolToVis}}" />
-
+            <Label Content="Status: Not Logged In" Visibility="{Binding LoggedInStatus, Converter={StaticResource BoolToVisInverse}}" />
+            <Button Content="Log In" Visibility="{Binding LoggedInStatus, Converter={StaticResource BoolToVisInverse}}" />
+            <Button Content="Log Out" Visibility="{Binding LoggedInStatus, Converter={StaticResource BoolToVis}}" />
         </WrapPanel>
-
 
     </Grid>
 </UserControl>
+

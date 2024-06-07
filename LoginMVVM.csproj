@@ -7,9 +7,5 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="Converters\" />
-  </ItemGroup>
 
 </Project>
