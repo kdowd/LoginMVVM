@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ using LoginMVVM.Commands;
 
 namespace LoginMVVM.ViewModels
 {
-    public class LoggedInUser
+    public class LoggedInUser : INotifyPropertyChanged
     {
         public bool LoggedInStatus { get; set; }
         public ICommand LogOutCommand { get;  }
@@ -18,6 +19,22 @@ namespace LoginMVVM.ViewModels
         {
             LoggedInStatus = true;
             LogOutCommand = new LogOutCommand(this);
+           
+        }
+
+        public void LogOut()
+        {
+            LoggedInStatus = false; 
+            RaisePropertyChanged(nameof(LoggedInStatus));
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void RaisePropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
         }
     }
 }

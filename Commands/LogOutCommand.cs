@@ -25,10 +25,8 @@ namespace LoginMVVM.Commands
 
         public void Execute(object? parameter)
         {
-            MessageBox.Show("Log Out");
-            vm.LoggedInStatus = false;
-            CommandManager.InvalidateRequerySuggested();
-
+       
+            vm.LogOut();
 
         }
 
