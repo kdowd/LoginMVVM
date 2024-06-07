@@ -16,9 +16,10 @@
         <model:LoggedInUser />
     </UserControl.DataContext>
     <Grid>
+        <!-- https://www.codeproject.com/Articles/24330/WPF-Bind-to-Opposite-Boolean-Value-Using-a-Convert -->
         <WrapPanel>
             <Label Content="Status: Logged In" Visibility="{Binding LoggedInStatus, Converter={StaticResource BoolToVis}}" />
-            <Label Content="Status: Not Logged In"  Visibility="{Binding !LoggedInStatus, Converter={StaticResource BoolToVis}}" />
+            <Label Content="Status: Not Logged In"  Visibility="{Binding LoggedInStatus, Converter={StaticResource BoolToVis}}" />
 
         </WrapPanel>
 
