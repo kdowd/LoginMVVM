@@ -24,5 +24,10 @@ namespace LoginMVVM
         {
             InitializeComponent();
         }
+
+        private void LogInElement_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

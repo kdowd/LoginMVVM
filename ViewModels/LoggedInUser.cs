@@ -12,19 +12,19 @@ namespace LoginMVVM.ViewModels
     public class LoggedInUser : INotifyPropertyChanged
     {
         public bool LoggedInStatus { get; set; }
-        public ICommand LogOutCommand { get;  }
+        public ICommand LogOutCommand { get; }
 
 
         public LoggedInUser()
         {
             LoggedInStatus = true;
             LogOutCommand = new LogOutCommand(this);
-           
+
         }
 
         public void LogOut()
         {
-            LoggedInStatus = false; 
+            LoggedInStatus = !LoggedInStatus;
             RaisePropertyChanged(nameof(LoggedInStatus));
         }
 

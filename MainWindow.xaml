@@ -7,14 +7,21 @@
         xmlns:commands="clr-namespace:LoginMVVM.Commands"
         xmlns:View="clr-namespace:LoginMVVM.View" x:Class="LoginMVVM.MainWindow"
         mc:Ignorable="d"
+		             xmlns:model="clr-namespace:LoginMVVM.ViewModels"
+             xmlns:converters="clr-namespace:LoginMVVM.Converters"
         Title="MainWindow" Height="450" Width="800" Background="#FF826F6F">
-    <Window.CommandBindings>
-     
-    </Window.CommandBindings>
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <converters:BooleanToOppositeBoolConverter x:Key="BoolToVisInverse" />
+    </Window.Resources>
+
+
     <Grid>
 
-        <View:UserControl1   HorizontalAlignment="Right" VerticalAlignment="Top"/>
-        <Button  Command="{}" Padding="20" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Log Out" />
-        
+        <View:UserControl1 x:Name="LogInElement" HorizontalAlignment="Right" VerticalAlignment="Top" Loaded="LogInElement_Loaded"/>
+
+        <Button Command="{Binding LogOutCommand}" DataContext="{Binding DataContext, ElementName=LogInElement}" IsEnabled="{Binding LoggedInStatus}"  Padding="20" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Log Out" />
+
     </Grid>
 </Window>

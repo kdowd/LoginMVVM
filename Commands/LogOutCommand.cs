@@ -14,7 +14,8 @@ namespace LoginMVVM.Commands
 
         private readonly LoggedInUser vm;
 
-        public LogOutCommand(LoggedInUser vm) {
+        public LogOutCommand(LoggedInUser vm)
+        {
             this.vm = vm;
         }
 
@@ -25,12 +26,12 @@ namespace LoginMVVM.Commands
 
         public void Execute(object? parameter)
         {
-       
+
             vm.LogOut();
 
         }
 
-        public event EventHandler CanExecuteChanged
+        public event EventHandler? CanExecuteChanged
         {
 
             add
