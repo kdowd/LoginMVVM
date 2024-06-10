@@ -23,12 +23,16 @@
     </UserControl.DataContext>
     <Grid>
         <!-- https://www.codeproject.com/Articles/24330/WPF-Bind-to-Opposite-Boolean-Value-Using-a-Convert -->
-        <WrapPanel>
-            <Label Content="Status: Logged In" Visibility="{Binding LoggedInStatus, Converter={StaticResource BoolToVis}}" />
-            <Label Content="Status: Not Logged In" Visibility="{Binding LoggedInStatus, Converter={StaticResource BoolToVisInverse}}" />
-            <Button Command="{Binding LogOutCommand}" Content="Log In" Visibility="{Binding LoggedInStatus, Converter={StaticResource BoolToVisInverse}}" />
-            <Button Command="{Binding LogOutCommand}" Content="Log Out" Visibility="{Binding LoggedInStatus, Converter={StaticResource BoolToVis}}" />
+        <WrapPanel Visibility="{Binding LoggedInStatus, Converter={StaticResource BoolToVis}}">
+            <Label Content="Status: Logged In"  />
+            <Button Command="{Binding LogOutCommand}" Content="Log Out" />
         </WrapPanel>
+
+        <WrapPanel Visibility="{Binding LoggedInStatus, Converter={StaticResource BoolToVisInverse}}">
+            <Label Content="Status: Not Logged In"   />
+            <Button Command="{Binding LogOutCommand}" Content="Log In" />
+        </WrapPanel>
+
 
     </Grid>
 </UserControl>

@@ -25,11 +25,11 @@ namespace LoginMVVM.ViewModels
         public void LogOut()
         {
             LoggedInStatus = !LoggedInStatus;
-            RaisePropertyChanged(nameof(LoggedInStatus));
+            BroadcastPropertyUpdated(nameof(LoggedInStatus));
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
-        protected void RaisePropertyChanged(string name)
+        private void BroadcastPropertyUpdated(string name)
         {
             if (PropertyChanged != null)
             {
